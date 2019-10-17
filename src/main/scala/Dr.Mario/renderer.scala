@@ -5,29 +5,34 @@ import scalafx.scene.paint.Color
 class Renderer(canvas: Canvas) {
   val gc = canvas.graphicsContext2D
 
-  def render(board: Board): Unit = {
+  def render(board1: PassableBoard, board2: PassableBoard): Unit = {
     gc.fill = Color.Black
     gc.fillRect(0, 0, 800, 800)
+    drawBoard(board1, 0)
+    drawBoard(board2, 600)
+  }
+
+  def drawBoard(board: PassableBoard, xoff: Int): Unit = {
     for (elem <- board.elements; cell <- elem.cells) {
-      drawCell(cell)
+      drawCell(cell, xoff)
     }
     for (cell <- board.currentPill.cells) {
-      drawCell(cell)
+      drawCell(cell, xoff)
     }
   }
 
-  def drawCell(cell: Cell): Unit = {
+  def drawCell(cell: PassableCell, xoff: Int): Unit = {
     val color = cell.color match {
       case DMColor.Red => Color.Red
       case DMColor.Yellow => Color.Yellow
       case DMColor.Blue => Color.Blue
     }
     gc.fill = color
-    cell match {
-      case v: Virus =>
-        gc.fillOval(v.x*20, v.y*20, 20, 20)
-      case pp: PillPiece =>
-        gc.fillRect(pp.x*20, pp.y*20, 20, 20)
+    cell.style match {
+      case 0 =>  // Virus
+        gc.fillOval(cell.x*20 + xoff, cell.y*20, 20, 20)
+      case 1 =>  // Pill
+        gc.fillRect(cell.x*20 + xoff, cell.y*20, 20, 20)
     }  }
   
 }

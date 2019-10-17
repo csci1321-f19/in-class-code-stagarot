@@ -31,7 +31,6 @@ object Main extends JFXApp {
 				ke.code match {
 					case KeyCode.Left => board.leftReleased()
 					case KeyCode.Right => board.rightReleased()
-					case KeyCode.Up => board.upReleased()
 					case KeyCode.Down => board.downReleased()
 					case _ => 
 				}
@@ -42,7 +41,8 @@ object Main extends JFXApp {
 				if(lastTime > 0) {
 					val delay = (time - lastTime)/1e9
 					board.update(delay)
-					renderer.render(board)
+					val pb = board.makePassable
+					renderer.render(pb, pb)
 				}
 				lastTime = time
 			})
