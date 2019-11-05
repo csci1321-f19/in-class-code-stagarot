@@ -8,6 +8,7 @@ import java.io.InputStreamReader
 import scala.concurrent.Future
 import scala.concurrent.duration._
 
+//whole networking package is used for the networked mud
 object ActorChat extends App {
   val system = ActorSystem("Chat")
 

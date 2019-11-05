@@ -1,5 +1,6 @@
 package Dr.Mario
 
+//networked graphic game assignment uses this
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.scene.canvas.Canvas
@@ -23,7 +24,7 @@ object Client extends JFXApp {
   dialog.contentText = "What machine is the server running on?"
   val host = dialog.showAndWait().getOrElse("localhost")
   
-  val sock = new Socket("localhost", 8080)
+  val sock = new Socket(host, 8080)
   val out = new ObjectOutputStream(sock.getOutputStream())
   val in = new ObjectInputStream(sock.getInputStream())
 
