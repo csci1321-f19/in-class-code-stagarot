@@ -1,4 +1,4 @@
-package basics.adt
+package adt
 
 class DoublyLinkedList[A] extends collection.mutable.Buffer[A] {
     import DoublyLinkedList._

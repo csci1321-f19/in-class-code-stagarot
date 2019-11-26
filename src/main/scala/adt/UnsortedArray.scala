@@ -1,4 +1,4 @@
-package basics.adt
+package adt
 
 class UnsortedArrayPQ[A] extends MyPriorityQueue[A]{
     def enqueue(value:A):Unit = ???

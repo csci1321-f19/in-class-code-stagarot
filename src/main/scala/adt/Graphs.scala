@@ -1,4 +1,4 @@
-package basics.adt
+package adt
 
 object Graphs extends App{
     val g = Array(

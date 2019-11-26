@@ -1,4 +1,4 @@
-package basics.adt
+package adt
 
 trait MyPriorityQueue[A] {
     def enqueue(value: A): Unit

@@ -1,4 +1,4 @@
-package basics.adt
+package adt
 
 class SinglyLinkedList[A] extends collection.mutable.Buffer[A] {
   import SinglyLinkedList._
